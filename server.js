@@ -1,0 +1,20 @@
+/**
+ * server.js
+ * Tiny static server for the AI practitioner application page.
+ * Deployed on Railway — serves /public.
+ */
+const express = require("express");
+const path = require("path");
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+app.listen(PORT, () => {
+  console.log(`Application page running on port ${PORT}`);
+});

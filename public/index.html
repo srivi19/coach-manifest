@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vi Narayanan — AI Practitioner Application</title>
+  <meta name="description" content="Vi Narayanan — AI practitioner application page: cover letter, resume, and live AI builds (CampusVoice, Market-Gap AI, WC2026 Soccer Predictor)." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <script>
+    // Apply saved/preferred theme before paint to avoid a flash of the wrong theme
+    (function () {
+      var saved = localStorage.getItem("theme");
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ══════════ HERO ══════════ -->
+  <header class="hero">
+    <div class="hero-eyebrow">Application · AI Practitioner Role</div>
+    <h1>Vi <span>Narayanan</span></h1>
+    <p class="hero-sub"><em>Built with AI, by an AI practitioner — not just written about one.</em></p>
+    <p class="hero-meta">Knoxville, TN &nbsp;·&nbsp; srividya.chandra@gmail.com &nbsp;·&nbsp;
+      <a href="https://github.com/srivi19" target="_blank">github.com/srivi19</a> &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/vi-narayanan/" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
+      <a href="https://srividya.hariths.com" target="_blank">srividya.hariths.com</a>
+    </p>
+    <nav class="hero-nav">
+      <a href="#cover-letter">Cover Letter</a>
+      <a href="#resume">Resume</a>
+      <a href="#builds">AI Builds</a>
+      <a href="#learning">Learning Note</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle light/dark mode">🌙</button>
+    </nav>
+  </header>
+
+  <!-- ══════════ NOTE ON THIS PAGE ══════════ -->
+  <section class="page-note">
+    <p>
+      This page <em>is</em> the application — built with Claude (Cowork) as a multi-file
+      Express + static site, deployed on Railway. Every section below was assembled the same
+      way I build everything else: research first, draft content, then structure it.
+      Source for this page: <a href="https://github.com/srivi19" target="_blank">github.com/srivi19</a>.
+    </p>
+  </section>
+
+  <!-- ══════════ COVER LETTER ══════════ -->
+  <section class="section" id="cover-letter">
+    <div class="section-label">01 · Cover Letter</div>
+    <h2>Describe an AI workflow you built that solved a real problem.</h2>
+    <p class="prompt-quote">
+      "What platforms did you orchestrate? What was the stuck point that prompted you to build it?
+      And how did you package it — or how would you, if asked to share it with others?"
+    </p>
+
+    <div class="letter">
+      <p>
+        The most recent thing I built end-to-end is <strong>CampusVoice</strong> — an agent that
+        lets students, counselors, and admins ask plain-English questions like
+        <em>"What are UTK students complaining about?"</em> and get back a synthesized answer with
+        real, verbatim quotes, instead of scrolling through thousands of Rate My Professors and
+        College Confidential posts.
+      </p>
+      <p>
+        <strong>The stuck point:</strong> I had ~13K reviews indexed in Elasticsearch, but plain
+        keyword search just dumps a wall of results — nobody wants to read 200 hits. I needed
+        something that could decide what to search, retry when a query came back empty, and then
+        write a coherent, quote-grounded answer.
+      </p>
+      <p>
+        <strong>What I orchestrated:</strong> Gemini 2.5 Flash as the reasoning loop, the
+        <strong>Elastic MCP Server</strong> as the tool layer (Gemini calls Elasticsearch directly
+        via JSON-RPC — no hardcoded query templates), and Elasticsearch Serverless on Elastic Cloud
+        as the index. The official MCP SDK kept hanging on stdio on Windows, so I wrote a minimal
+        JSON-RPC client myself — that was the actual unblock.
+      </p>
+      <p>
+        <strong>Packaging:</strong> a Flask API + vanilla JS frontend, Dockerized and deployed on
+        Cloud Run, with a 3-tier search fallback baked into the system prompt so the agent never
+        just gives up. If I were handing this to someone else, I'd share the GitHub repo and the
+        architecture PDF — the system prompt itself is basically the workflow's blueprint
+        (see the downloadable artifact in the AI Builds section below).
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════ RESUME ══════════ -->
+  <section class="section alt" id="resume">
+    <div class="section-label">02 · Resume</div>
+    <h2>Srividya Narayanan (Vi)</h2>
+    <p class="resume-title">Data &amp; Support Analyst — building toward AI / Agentic Systems</p>
+    <a class="download-btn" href="/assets/Vi_Narayanan_Resume.docx" download>⬇ Download Resume (.docx)</a>
+
+    <div class="resume-grid">
+      <div class="resume-col">
+        <h3>Top Skills</h3>
+        <ul class="skill-list">
+          <li>Data Analysis &amp; Visualization (SQL, Power BI, BRIO)</li>
+          <li>Predictive Modeling (Zerve AI, Monte Carlo)</li>
+          <li>Google Gemini &amp; Prompt Engineering</li>
+          <li>Process Implementation &amp; Documentation</li>
+          <li>ServiceNow &amp; Technical Support</li>
+          <li>Rapid Prototyping · Railway · GitHub</li>
+        </ul>
+
+        <h3>Education</h3>
+        <p class="edu">Bachelor of Engineering (Instrumentation Technology)<br/>Malnad College of Engineering, India</p>
+      </div>
+
+      <div class="resume-col resume-experience">
+        <h3>Experience</h3>
+
+        <div class="job">
+          <div class="job-head">
+            <strong>Data &amp; Support Analyst</strong>
+            <span>May 2022 – Present</span>
+          </div>
+          <div class="job-org">Kaiser Permanente, Knoxville, TN</div>
+          <ul>
+            <li>Implement, maintain, and document internal reporting for staff scheduling, timekeeping, and payroll applications, ensuring SLA compliance.</li>
+            <li>Administer scheduling systems and model 8-hour shift patterns to optimize hospital coverage and reduce conflicts.</li>
+            <li>Run QA and end-user testing for feature releases and patches; maintain training materials and knowledge-base articles.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <strong>Data Analyst &amp; Developer — Independent AI Projects</strong>
+            <span>Mar 2026 – Present</span>
+          </div>
+          <ul>
+            <li>3rd place, GEN AI Hackathon (March 2026) for rapid prototyping.</li>
+            <li>Built <strong>Market-Gap AI</strong> — a local-business opportunity finder combining municipal open data, live SERP scraping, Census demographics, and Gemini.</li>
+            <li>Built and deployed <strong>WC2026 Soccer Predictor</strong> — Elo + ML + 10,000 Monte Carlo simulations of the 2026 World Cup.</li>
+            <li>Built <strong>CampusVoice</strong> — Gemini + Elastic MCP agent over 13,192 student reviews (Google Cloud Rapid Agent Hackathon 2026).</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <strong>Data Analyst</strong>
+            <span>Oct 2005 – Jun 2011</span>
+          </div>
+          <div class="job-org">Hewlett-Packard, India</div>
+          <ul>
+            <li>Designed operational dashboards and executive reports for project monitoring and strategic decisions.</li>
+            <li>Wrote SQL/BRIO queries against Avaya telephony data for cross-site (India, China, Costa Rica) performance views.</li>
+            <li>Recognized as Most Innovative Employee for scorecard analysis and process improvements.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-head">
+            <strong>Full-Time Parent &amp; Community Volunteer</strong>
+            <span>Jul 2011 – Apr 2022</span>
+          </div>
+          <ul>
+            <li>Coordinated community projects, volunteered with Cub Scouts, and taught yoga and music.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ AI BUILDS ══════════ -->
+  <section class="section" id="builds">
+    <div class="section-label">03 · Examples of My AI Builds</div>
+    <h2>Live agents, prompts, and workflows</h2>
+    <p class="section-intro">
+      Three live, deployed projects — plus the actual orchestration prompt behind the most
+      recent one, downloadable as a real artifact.
+    </p>
+
+    <div class="build-grid">
+      <article class="build-card featured">
+        <div class="build-tag">Featured · Google Cloud Rapid Agent Hackathon 2026</div>
+        <h3>CampusVoice</h3>
+        <p>
+          AI agent answering plain-English questions about professors, courses, and workload —
+          synthesized from 13,192 real student reviews (Rate My Professors + College Confidential)
+          across 7 universities. Gemini 2.5 Flash + Elastic MCP Server + Elasticsearch Serverless,
+          deployed on Cloud Run.
+        </p>
+        <div class="build-links">
+          <a href="https://campus-voice-agent-420887396772.us-east1.run.app/" target="_blank" class="btn">Live App →</a>
+          <a href="https://github.com/srivi19/campus-voice-agent" target="_blank" class="btn ghost">GitHub</a>
+          <a href="/assets/campusvoice-system-prompt.txt" target="_blank" class="btn ghost">System Prompt (.txt)</a>
+        </div>
+      </article>
+
+      <article class="build-card">
+        <div class="build-tag">WWV Hackathon 2026 · 3rd Place</div>
+        <h3>Market-Gap AI</h3>
+        <p>
+          Vibe-coded platform that shows local entrepreneurs where to open their next business —
+          combining Montgomery Open Data, live Google SERP scraping (Bright Data), US Census
+          demographics, and Gemini to surface "retail desert" opportunities.
+        </p>
+        <div class="build-links">
+          <a href="https://market-gap-ai-production.up.railway.app/" target="_blank" class="btn">Live App →</a>
+          <a href="https://github.com/srivi19/market-gap-ai" target="_blank" class="btn ghost">GitHub</a>
+        </div>
+      </article>
+
+      <article class="build-card">
+        <div class="build-tag">ZerveHack 2026</div>
+        <h3>WC2026 Soccer Predictor</h3>
+        <p>
+          AI-powered 2026 FIFA World Cup prediction engine — Elo ratings from 964 historical
+          matches (1930–2022), blended with FIFA rankings, a Gradient Boosted ML model, and
+          10,000 Monte Carlo simulations of the full 48-team tournament.
+        </p>
+        <div class="build-links">
+          <a href="https://soccer.hariths.com" target="_blank" class="btn">Live App →</a>
+          <a href="https://github.com/srivi19/wc2026-soccer-predictor" target="_blank" class="btn ghost">GitHub</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ══════════ LEARNING NOTE ══════════ -->
+  <section class="section alt" id="learning">
+    <div class="section-label">04 · Last New AI Feature / Platform Absorbed</div>
+    <h2>Model Context Protocol (MCP)</h2>
+    <div class="letter">
+      <p>
+        The last platform feature I really had to sit with was <strong>MCP (Model Context
+        Protocol)</strong> — wiring Gemini up to the Elastic MCP Server so it could decide what to
+        search i
