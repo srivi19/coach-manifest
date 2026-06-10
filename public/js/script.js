@@ -13,23 +13,41 @@ document.querySelectorAll('.hero-nav a[href^="#"]').forEach((link) => {
 const root = document.documentElement;
 const toggleBtn = document.getElementById("theme-toggle");
 
-function applyTheme(theme) {
-  if (theme === "dark") {
-    root.setAttribute("data-theme", "dark");
-    toggleBtn.textContent = "☀️";
-  } else {
-    root.removeAttribute("data-theme");
-    toggleBtn.textContent = "🌙";
+function getStoredTheme() {
+  try {
+    return localStorage.getItem("theme");
+  } catch (e) {
+    return null;
   }
 }
 
-const saved = localStorage.getItem("theme");
+function storeTheme(theme) {
+  try {
+    localStorage.setItem("theme", theme);
+  } catch (e) {
+    // localStorage unavailable (e.g. file:// origin) — ignore
+  }
+}
+
+function applyTheme(theme) {
+  if (theme === "dark") {
+    root.setAttribute("data-theme", "dark");
+    if (toggleBtn) toggleBtn.textContent = "☀️";
+  } else {
+    root.removeAttribute("data-theme");
+    if (toggleBtn) toggleBtn.textContent = "🌙";
+  }
+}
+
+const saved = getStoredTheme();
 const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 applyTheme(saved || (prefersDark ? "dark" : "light"));
 
-toggleBtn.addEventListener("click", () => {
-  const isDark = root.getAttribute("data-theme") === "dark";
-  const next = isDark ? "light" : "dark";
-  applyTheme(next);
-  localStorage.setItem("theme", next);
-});
+if (toggleBtn) {
+  toggleBtn.addEventListener("click", () => {
+    const isDark = root.getAttribute("data-theme") === "dark";
+    const next = isDark ? "light" : "dark";
+    applyTheme(next);
+    storeTheme(next);
+  });
+}

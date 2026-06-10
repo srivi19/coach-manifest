@@ -298,4 +298,5 @@ code {
 @media (max-width: 700px) {
   .hero h1 { font-size: 38px; }
   .resume-grid { grid-template-columns: 1fr; }
-  .build-card.featur
+  .build-card.featured { grid-column: auto; }
+}

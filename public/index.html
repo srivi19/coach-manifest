@@ -10,7 +10,8 @@
   <script>
     // Apply saved/preferred theme before paint to avoid a flash of the wrong theme
     (function () {
-      var saved = localStorage.getItem("theme");
+      var saved = null;
+      try { saved = localStorage.getItem("theme"); } catch (e) {}
       var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       if (saved === "dark" || (!saved && prefersDark)) {
         document.documentElement.setAttribute("data-theme", "dark");
@@ -34,7 +35,6 @@
       <a href="#cover-letter">Cover Letter</a>
       <a href="#resume">Resume</a>
       <a href="#builds">AI Builds</a>
-      <a href="#learning">Learning Note</a>
       <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle light/dark mode">🌙</button>
     </nav>
   </header>
@@ -223,12 +223,11 @@
     </div>
   </section>
 
-  <!-- ══════════ LEARNING NOTE ══════════ -->
-  <section class="section alt" id="learning">
-    <div class="section-label">04 · Last New AI Feature / Platform Absorbed</div>
-    <h2>Model Context Protocol (MCP)</h2>
-    <div class="letter">
-      <p>
-        The last platform feature I really had to sit with was <strong>MCP (Model Context
-        Protocol)</strong> — wiring Gemini up to the Elastic MCP Server so it could decide what to
-        search i
+  <footer class="footer">
+    <p>Vi Narayanan · srividya.chandra@gmail.com · <a href="https://github.com/srivi19" target="_blank">GitHub</a> · <a href="https://www.linkedin.com/in/vi-narayanan/" target="_blank">LinkedIn</a> · <a href="https://srividya.hariths.com" target="_blank">Portfolio</a></p>
+    <p class="footer-sub">Page generated with Claude (Cowork) · Deployed on Railway</p>
+  </footer>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
