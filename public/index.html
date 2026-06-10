@@ -35,6 +35,7 @@
       <a href="#cover-letter">Cover Letter</a>
       <a href="#resume">Resume</a>
       <a href="#builds">AI Builds</a>
+      <a href="#learning">Learning Note</a>
       <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle light/dark mode">🌙</button>
     </nav>
   </header>
@@ -138,6 +139,7 @@
             <li>Built <strong>Market-Gap AI</strong> — a local-business opportunity finder combining municipal open data, live SERP scraping, Census demographics, and Gemini.</li>
             <li>Built and deployed <strong>WC2026 Soccer Predictor</strong> — Elo + ML + 10,000 Monte Carlo simulations of the 2026 World Cup.</li>
             <li>Built <strong>CampusVoice</strong> — Gemini + Elastic MCP agent over 13,192 student reviews (Google Cloud Rapid Agent Hackathon 2026).</li>
+            <li>Built <strong>AIHackTracker</strong> — a Next.js + Supabase hackathon discovery and "what wins" intelligence tool for the Mind the Product hackathon (World Product Day 2026).</li>
           </ul>
         </div>
 
@@ -172,7 +174,7 @@
     <div class="section-label">03 · Examples of My AI Builds</div>
     <h2>Live agents, prompts, and workflows</h2>
     <p class="section-intro">
-      Three live, deployed projects — plus the actual orchestration prompt behind the most
+      Live, deployed projects — plus the actual orchestration prompt behind the most
       recent one, downloadable as a real artifact.
     </p>
 
@@ -190,6 +192,19 @@
           <a href="https://campus-voice-agent-420887396772.us-east1.run.app/" target="_blank" class="btn">Live App →</a>
           <a href="https://github.com/srivi19/campus-voice-agent" target="_blank" class="btn ghost">GitHub</a>
           <a href="/assets/campusvoice-system-prompt.txt" target="_blank" class="btn ghost">System Prompt (.txt)</a>
+        </div>
+      </article>
+
+      <article class="build-card">
+        <div class="build-tag">Mind the Product · World Product Day 2026</div>
+        <h3>AIHackTracker</h3>
+        <p>
+          One hub for every AI hackathon — aggregated from Devpost, with Gemini-generated
+          summaries, deadline tracking, and "what wins" intelligence pulled from past winning
+          projects. Next.js + Supabase + Gemini 1.5 Flash.
+        </p>
+        <div class="build-links">
+          <a href="https://hacktracker-production.up.railway.app/" target="_blank" class="btn">Live App →</a>
         </div>
       </article>
 
@@ -220,6 +235,30 @@
           <a href="https://github.com/srivi19/wc2026-soccer-predictor" target="_blank" class="btn ghost">GitHub</a>
         </div>
       </article>
+    </div>
+  </section>
+
+  <!-- ══════════ LEARNING NOTE ══════════ -->
+  <section class="section alt" id="learning">
+    <div class="section-label">04 · Last New AI Feature / Platform Absorbed</div>
+    <h2>Next.js, Supabase &amp; Railway</h2>
+    <div class="letter">
+      <p>
+        The last real stack jump was building <strong>AIHackTracker</strong> for the Mind the
+        Product hackathon (World Product Day 2026, run by Novus.ai). Everything I'd shipped
+        before — including CampusVoice — was Python: Flask, Elasticsearch, Docker, Cloud Run.
+        AIHackTracker meant React components, file-based routing in Next.js, a Postgres
+        database via Supabase, and Gemini 1.5 Flash summarizing hackathon listings pulled
+        from the Devpost API.
+      </p>
+      <p>
+        It took about three or four focused days before it stopped feeling foreign — the
+        Jun 15 deadline forced the pace. What got me there fastest was Railway's push-to-deploy:
+        every commit went live within a minute, so I could see exactly what a Next.js page or
+        Supabase query actually did instead of reading about it in the abstract. By day two I
+        was comfortable enough to start layering in the "what wins" intelligence that's the
+        actual point of the tool.
+      </p>
     </div>
   </section>
 
